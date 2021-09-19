@@ -1,2 +1,21 @@
 ---
-# tasks file for new-role
+
+- name: Get Latest Yara Release
+  uri:
+    url: https://api.github.com/repos/VirusTotal/yara/releases/latest
+  register: yara_release
+
+- name: Debug Release
+  debug: 
+    var: "{{yara_release.json.tag_name}}"
+
+- name: Download Yara Release
+  get_url:
+    url: "https://github.com/VirusTotal/yara/archive/refs/tags/{{yara_release.json.tag_name}}.zip"
+    dest: /tmp/yara.zip
+
+- name: Unzip Release
+  unarchive:
+    src: /tmp/yara.zip
+    dest: /tmp
+    remote_src: yes
