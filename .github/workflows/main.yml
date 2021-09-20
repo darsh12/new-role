@@ -22,7 +22,7 @@ jobs:
         
       - name : machine ls $HOME
         working-directory : "."
-        run : "ls -la $HOME"
+        run : "ls -la /home/runner/work/new-role/new-role/darsh12.new-role"
         
       - name: Lint code
         run: |
