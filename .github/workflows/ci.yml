@@ -10,6 +10,11 @@ jobs:
   lint:
     name: CI
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro:
+          - ubuntu20.04
+          - bullseye
 
     steps:
       - name: Checkout the code base
@@ -30,3 +35,4 @@ jobs:
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
