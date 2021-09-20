@@ -1,5 +1,10 @@
 name: Molecule Test
 on: [push]
+
+defaults:
+  run:
+    working-directory: 'darsh12.new-role'
+    
 jobs:
 
   lint:
@@ -26,5 +31,4 @@ jobs:
         
       - name: Lint code
         run: |
-          ls -la
           yamllint -c .yamllint .
