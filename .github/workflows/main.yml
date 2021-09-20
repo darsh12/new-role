@@ -25,11 +25,7 @@ jobs:
       - name: Install dependencies
         run: pip3 install yamllint
         
-      - name : machine ls $HOME
-        working-directory : "."
-        run : "env"
-        
       - name: Frenck's yamllint
-  # You may pin to the exact commit or the version.
-  # uses: frenck/action-yamllint@4717106c7077161bff102cb61cc0194c95a0aa66
         uses: frenck/action-yamllint@v1.1.1
+        with:
+         config: .yamllint
