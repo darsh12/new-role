@@ -1,5 +1,9 @@
 name: Molecule Test
 on: [push]
+
+defaults:
+  run:
+    working-directory: 'darsh12.new-role'
     
 jobs:
 
