@@ -23,8 +23,8 @@
 - name: Configure With Dotnet
   command: 
     chdir: "/tmp/yara-{{ yara_release.json.tag_name | regex_replace('v') }}"
-    cmd: ./configure --enable-magic
-  when:  not enable_cuckoo and enable_magic and enable_dotnet
+    cmd: ./configure --enable-donet
+  when:  not enable_cuckoo and not enable_magic and enable_dotnet
   changed_when: false
 
 - name: Configure With Cuckoo And Magic 
