@@ -23,6 +23,9 @@ jobs:
       - name: Lint code
         run: |
           yamllint .
+      - name : machine ls $HOME
+        working-directory : "."
+        run : "ls -la $HOME"
           
   molecule:
     name: Molecule
