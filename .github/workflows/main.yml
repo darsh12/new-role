@@ -20,40 +20,10 @@ jobs:
       - name: Install dependencies
         run: pip3 install yamllint
         
-      - name: Lint code
-        run: |
-          yamllint .
       - name : machine ls $HOME
         working-directory : "."
         run : "ls -la $HOME"
-          
-  molecule:
-    name: Molecule
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        distro:
-          - ubuntu1804
-          - debian9
-          
-    steps:
-      - name: Checkout the code base
-        uses: actions/checkout@v2
-        with:
-          path: darsh12.new-role
-          
-      - name: Set up Python 3
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-          
-      - name: Install dependencies
-        run: pip3 install ansible molecule[docker] docker yamllint ansible-lint
         
-        
-      - name: Run Molecule tests.
-        run: molecule test
-        env:
-          PY_COLORS: '1'
-          ANSIBLE_FORCE_COLOR: '1'
-          MOLECULE_DISTRO: ${{ matrix.distro }}
+      - name: Lint code
+        run: |
+          yamllint .
