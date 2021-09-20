@@ -1,2 +1,8 @@
 ---
 # vars file for new-role
+required_packages:
+  - automake 
+  - libtool 
+  - make 
+  - gcc 
+  - pkg-config
