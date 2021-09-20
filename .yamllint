@@ -5,13 +5,13 @@ extends: default
 rules:
   braces:
     max-spaces-inside: 1
-    level: warn
+    level: error
   brackets:
     max-spaces-inside: 1
-    level: warn
+    level: error
   colons:
     max-spaces-after: -1
-    level: warn
+    level: error
   commas:
     max-spaces-after: -1
     level: error
