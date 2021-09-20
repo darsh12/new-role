@@ -1,0 +1,12 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Verify Yara Can Run
+    command:
+      cmd: /usr/local/bin/yara -v
+    register: yara_version
+    changed_when: "'Yara' in yara_version.stdout"

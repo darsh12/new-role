@@ -32,17 +32,19 @@
     state: present
   become: yes
 
+- name: Install Module Dependent Packages
+  include_tasks: module_packages.yml
+
 - name: Run Bootstrap
   command: 
     chdir: "/tmp/yara-{{ yara_release.json.tag_name | regex_replace('v') }}"
     cmd: ./bootstrap.sh
   changed_when: false
 
-- name: Run Configure
-  command: 
-    chdir: "/tmp/yara-{{ yara_release.json.tag_name | regex_replace('v') }}"
-    cmd: ./configure
-  changed_when: false
+
+- name: Include Configure Role
+  include_tasks: configure.yml
+
 
 - name: Run Makefile
   make:

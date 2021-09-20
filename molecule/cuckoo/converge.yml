@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include new-role With Cuckoo"
+      include_role:
+        name: "new-role"
+      vars:
+        enable_cuckoo: true

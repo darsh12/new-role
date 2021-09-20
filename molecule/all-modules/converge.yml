@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include new-role With All Modules"
+      include_role:
+        name: "new-role"
+      vars:
+        enable_ssl: true
+        enable_cuckoo: true
+        enable_magic: true
+        enable_dotnet: true

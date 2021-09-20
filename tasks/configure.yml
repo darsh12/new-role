@@ -1,0 +1,56 @@
+---
+- name: Configure Without Any Modules
+  command: 
+    chdir: "/tmp/yara-{{ yara_release.json.tag_name | regex_replace('v') }}"
+    cmd: ./configure
+  when:  not enable_cuckoo and not enable_magic and not enable_dotnet
+  changed_when: false
+
+- name: Configure With Cuckoo
+  command: 
+    chdir: "/tmp/yara-{{ yara_release.json.tag_name | regex_replace('v') }}"
+    cmd: ./configure --enable-cuckoo
+  when:  enable_cuckoo and not enable_magic and not enable_dotnet
+  changed_when: false
+
+- name: Configure With Magic
+  command: 
+    chdir: "/tmp/yara-{{ yara_release.json.tag_name | regex_replace('v') }}"
+    cmd: ./configure --enable-magic
+  when:  not enable_cuckoo and enable_magic and not enable_dotnet
+  changed_when: false
+
+- name: Configure With Dotnet
+  command: 
+    chdir: "/tmp/yara-{{ yara_release.json.tag_name | regex_replace('v') }}"
+    cmd: ./configure --enable-magic
+  when:  not enable_cuckoo and enable_magic and enable_dotnet
+  changed_when: false
+
+- name: Configure With Cuckoo And Magic 
+  command: 
+    chdir: "/tmp/yara-{{ yara_release.json.tag_name | regex_replace('v') }}"
+    cmd: ./configure --enable-cuckoo --enable_magic
+  when:  enable_cuckoo and enable_magic and not enable_dotnet
+  changed_when: false
+
+- name: Configure With Cuckoo And Dotnet
+  command: 
+    chdir: "/tmp/yara-{{ yara_release.json.tag_name | regex_replace('v') }}"
+    cmd: ./configure --enable-cuckoo --enable_dotnet
+  when:   enable_cuckoo and not enable_magic and enable_dotnet
+  changed_when: false
+
+- name: Configure With Magic and Dotnet
+  command: 
+    chdir: "/tmp/yara-{{ yara_release.json.tag_name | regex_replace('v') }}"
+    cmd: ./configure --enable-magic --enable_dotnet
+  when:  not enable_cuckoo and enable_magic and enable_dotnet
+  changed_when: false
+
+- name: Configure With Magic, Cuckoo and Dotnet
+  command: 
+    chdir: "/tmp/yara-{{ yara_release.json.tag_name | regex_replace('v') }}"
+    cmd: ./configure --enable-magic --enable_cuckoo --enable_dotnet
+  when: enable_cuckoo and enable_magic and enable_dotnet
+  changed_when: false
