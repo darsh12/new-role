@@ -1,7 +1,5 @@
 ---
 - name: Converge
   hosts: all
-  tasks:
-    - name: "Include new-role"
-      include_role:
-        name: "new-role"
+  roles:
+    - role: darsh12.new-role
