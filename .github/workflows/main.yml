@@ -22,7 +22,7 @@ jobs:
         
       - name : machine ls $HOME
         working-directory : "."
-        run : "ls -laR"
+        run : "env"
         
       - name: Lint code
         run: |
