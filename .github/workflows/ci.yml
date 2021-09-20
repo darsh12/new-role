@@ -13,8 +13,8 @@ jobs:
     strategy:
       matrix:
         distro:
-          - ubuntu20.04
-          - bullseye
+          - ubuntu2004
+          - debian10
 
     steps:
       - name: Checkout the code base
