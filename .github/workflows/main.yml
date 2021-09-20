@@ -26,4 +26,5 @@ jobs:
         
       - name: Lint code
         run: |
+          ls -la
           yamllint -c .yamllint .
